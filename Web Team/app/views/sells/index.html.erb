@@ -1,0 +1,57 @@
+<h1><% if @departmentName %><%= @departmentName %><% end %> Books for Sale</h1>
+
+<%= form_tag(controller: 'editions', action: 'search', method: 'get') do %>
+     <%= label_tag(:q, "Search by title: ") %>
+     <%= text_field_tag(:q)%>
+     <%#= select_tag :search_for_attribute , options_for_select(['title', 'isbn', 'author', 'edition', 'course'], 'title') %>
+     <%= submit_tag("Search", :class => 'btn') %>
+<% end %>
+
+<%= link_to "Sell a book", {action: "search"}, {class: 'btn btn-warning'} %>
+
+<ul class="pager">
+  <% unless @sells.size != 10 %>
+  <li class="next"><%= link_to "Next", sells_path(page: @nextPage, department: params[:department]) %></li>
+  <% end %>
+  <% unless @prevPage == -1 %>
+      <li class="next"><%= link_to "Previous", sells_path(page: @prevPage, department: params[:department]) %></li>
+  <% end %>
+</ul>
+
+<% unless @sells.empty? %>
+
+    <table id="books" class="table table-hover">
+      <% @sells.each do |listing| %>
+          <tr class="bookRow">
+            <td data-link="<%= edition_path(@books[listing.edition_id].id) %>"><%= image_tag @books[listing.edition_id].image, size: "100x50" %></td>
+            <td data-link="<%= edition_path(@books[listing.edition_id].id) %>">
+              <b>Title:</b> <%= @books[listing.edition_id].title %><br>
+              <b>ISBN:</b> <%= @books[listing.edition_id].isbn %><br>
+              <b>Author:</b> <%= @books[listing.edition_id].author %><br>
+              <b>Edition:</b> <%= @books[listing.edition_id].edition_num %><br>
+              <b>Course:</b> <%= @books[listing.edition_id].course_code %><br>
+            </td>
+            <td>
+              <span id="price"><b>Price:</b> $<%= listing.price %></span><br><br>
+              <b>Added:</b> <%= l(listing.start_date, :format => :notime) %><br>
+              <b>Expires:</b> <%= l(listing.end_date, :format => :notime) %><br><br>
+              <%= link_to "Contact Seller", {controller: 'sells', action: 'contactSeller'}, {class: 'btn btn-primary'} %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+
+<% end %>
+
+<% if @sells.empty? %>
+    <i>No books yet.</i>
+<% end %>
+
+<ul class="pager">
+  <% unless @sells.size != 10 %>
+  <li class="next"><%= link_to "Next", sells_path(page: @nextPage) %></li>
+  <% end %>
+  <% unless @prevPage == -1 %>
+      <li class="next"><%= link_to "Previous", sells_path(page: @prevPage) %></li>
+  <% end %>
+</ul>

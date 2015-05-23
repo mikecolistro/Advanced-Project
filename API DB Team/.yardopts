@@ -1,0 +1,3 @@
+-o public/doc
+src/*.rb
+test/*.rb

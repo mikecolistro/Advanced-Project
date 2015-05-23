@@ -1,0 +1,87 @@
+<GridLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:columnCount="5"
+    android:rowCount="10"
+    android:clickable="false"
+    android:columnOrderPreserved="true">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Book Title"
+        android:id="@+id/textViewBookTitle"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:id="@+id/bookImageIcon"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:src="@drawable/book1"
+        android:focusableInTouchMode="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="159dp"
+        android:layout_row="1"
+        android:layout_column="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Edition: 1"
+            android:id="@+id/textViewEditionNumber" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Frank Allaire"
+            android:id="@+id/textViewAuthor" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Penguin Publishing"
+            android:id="@+id/textViewPublisher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="MSRP: $159.99"
+            android:id="@+id/textViewMSRP" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Price: $"
+        android:id="@+id/textViewPrice"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:textSize="55dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/editTextPrice"
+        android:layout_row="2"
+        android:layout_column="1"
+        android:editable="true"
+        android:textSize="55dp" />
+
+</GridLayout>

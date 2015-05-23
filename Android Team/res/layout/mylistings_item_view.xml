@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeightLarge"
+    android:padding="6dip" >
+
+    <ImageView
+        android:id="@+id/listing_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="6dip"
+        android:contentDescription="TODO"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/listingTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_toRightOf="@id/listing_icon"
+        android:gravity="center_vertical"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Whatever Book"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/listingCourseInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/listingTitle"
+        android:layout_toRightOf="@id/listing_icon"
+        android:layout_toLeftOf="@id/mail_icon"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="COMP-4431-WA"
+        android:textSize="13sp" />
+
+
+
+    <TextView
+        android:id="@+id/listingPrice"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/listingCourseInfo"
+        android:layout_toRightOf="@id/listing_icon"
+        android:layout_toLeftOf="@id/mail_icon"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="Price: $50"
+        android:textSize="13sp" />
+
+
+
+
+</RelativeLayout>

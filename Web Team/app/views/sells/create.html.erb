@@ -1,0 +1,12 @@
+<% if @response == "sell" %>
+    <div class="alert alert-block alert-success">
+      <h4>Success!</h4>
+      Book successfully posted for sale.<br>
+      You can view you're listing in My Listings.
+    </div>
+<% else %>
+    <div class="alert alert-block alert-error">
+      <h4>Error!</h4>
+      Book not posted for sale.
+    </div>
+<% end %>

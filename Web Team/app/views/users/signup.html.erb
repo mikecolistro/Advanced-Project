@@ -1,0 +1,25 @@
+
+
+<div class= "signup">
+  <%= form_for(:user, :url => {:action => 'create'}) do |f| %>
+      <table style="border: #000000; background-color: whitesmoke;">
+        <h2> Signup </h2>
+        <tr>
+          <td><%=label_tag(:email) %></td>
+          <td> <%= f.text_field(:email) %>@lakeheadu.ca</td>
+        </tr>
+        <tr>
+          <td><%=label_tag(:password) %></td>
+          <td> <%= f.password_field(:password) %></td>
+        </tr>
+        <tr>
+          <td><%=label_tag(:confirm_password) %></td>
+          <td> <%= f.password_field(:confirm_password) %></td>
+        </tr>
+        <tr>
+          <td> &nbsp; </td>
+          <td><%= submit_tag("Submit") %></td>
+        </tr>
+      </table>
+  <% end %>
+</div>

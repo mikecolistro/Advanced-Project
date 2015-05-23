@@ -1,0 +1,23 @@
+<h1>Courses</h1>
+
+<br>
+
+<% unless @courses.empty? %>
+	<table id="courses" class="table table-hover">
+		<tbody>
+			<% @courses.each do |course| %>
+				<tr class="courseRow">
+					<td> 
+						<%= link_to (' ' + '(' + course.code + ') - ' + course.title), course_path(course.id) %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+
+	</table>
+
+<% end %>
+
+<% if @courses.empty? %>
+	<i> No courses yet. </i>
+<% end %>

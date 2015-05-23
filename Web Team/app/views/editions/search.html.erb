@@ -1,0 +1,47 @@
+<h1> Search results </h1>
+<p><%= "Searched query: \"#{@query.join(' ')}\"" %></p>
+
+<%= form_tag(controller: 'editions', action: 'search', method: 'get') do %>
+     <%= label_tag(:q, "Search by title: ") %>
+     <%= text_field_tag(:q)%>
+     <%#= select_tag :search_for_attribute , options_for_select(['title', 'isbn', 'author', 'edition', 'course'], 'title') %>
+     <%= submit_tag("Search", :class => 'btn') %>
+<% end %>
+
+<div class="well">
+  <strong> Results for <%= "\"#{@query.join(' ')}\": " %> </strong>
+  <%= @editions.count %>
+</div>
+
+<% unless @editions.empty? %>
+  <table id="books" class="table table-hover">
+        <% @editions.each do |book| %>
+            <tr class="bookRow">
+              <td data-link="<%= edition_path(book.id) %>"><%= image_tag book.image, size: "100x50" %></td>
+              <td data-link="<%= edition_path(book.id) %>">
+                <b>Title:</b>
+                <% book.title.split(' ').each do |word| %>
+                  <% if @query.include?(word) %>
+                    <span style="background: yellow;"> <%= word %> </span>
+                    <% else %>
+                    <%= word %>
+                  <% end %>
+                <% end %>
+                <br>
+                <b>ISBN:</b> <%= book.isbn %><br>
+                <b>Author:</b> <%= book.author %><br>
+                <b>Edition:</b> <%= book.edition_num %><br>
+                <b>Course:</b> <%= book.course_code %><br>
+                <b>Number of copies being sold:</b> <%= book.for_sale %><br>
+              </td>
+              <td><%= button_to "Buy", '#', {class: 'btn btn-primary'} %>
+                <%= link_to "Sell", new_sell_path(:isbn => book.isbn), {class: 'btn btn-success'} %>
+              </td>
+            </tr>
+        <% end %>
+      </table>
+<% end %>
+
+<% if @editions.empty? %>
+  <i> No books found.</i>
+<% end %>

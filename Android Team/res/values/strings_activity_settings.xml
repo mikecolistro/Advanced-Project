@@ -1,0 +1,30 @@
+<resources>
+        <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_department">Department</string>
+    <string-array name="pref_department_names">
+        <item>Anthropology</item>
+        <item>Biology</item>
+        <item>Chemistry</item>
+        <item>Classics</item>
+        <item>Computer Science</item>
+    </string-array>
+    <string-array name="pref_department_codes">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <!-- This is for setting default checkboxes all to empty -->
+    <string-array name="empty_array"></string-array>
+
+</resources>

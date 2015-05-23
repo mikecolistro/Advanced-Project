@@ -1,0 +1,75 @@
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+//There's probably a better way to do this CSS, this is just temporary.
+table#books tr.bookRow
+{
+  color:#000000;
+  background-color:#C3E6F5;
+  border:1px solid #98bf21;
+}
+
+table#books tr.bookRow:hover
+{
+  cursor: pointer;
+}
+
+table#books
+{
+  border-collapse:separate;
+  border-spacing:0 15px;
+}
+
+table#books tr.book
+{
+  color:#000000;
+  background-color:#C3E6F5;
+  border:1px solid #98bf21;
+}
+
+#price
+{
+  font-size: 20px
+}
+
+.radioLabel {
+  width:245px;
+}
+
+/* Errors */
+.field_with_errors {}
+.field_with_errors label { color: #AA0000; }
+.field_with_errors input { border: 1px solid #AA0000; }
+#errorExplanation { width: 400px; padding: 0; margin: 0 auto 1.5em; border: 1px solid #AA0000; background-color: #FFFFFF; font-size: 12px; }
+#errorExplanation h2 { font-weight: bold; font-size: 12px; padding: 5px 5px 5px 15px; margin: 0; width: 380px; background-color: #AA0000; color: #FFFFFF }
+#errorExplanation p { color: #333333; margin: 0; padding: 3px 0.5em; }
+#errorExplanation ul { margin-top: 0; }
+#errorExplanation ul li { list-style: square; }

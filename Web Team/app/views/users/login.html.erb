@@ -1,0 +1,25 @@
+
+
+<div class= "login">
+  <%= form_tag(:action => 'attempt_login') do %>
+      <table style="border: #000000; background-color: whitesmoke;">
+        <h2> Log In</h2>
+        <tr>
+          <td><%=label_tag(:email) %></td>
+          <td> <%= text_field_tag(:email) %> @lakeheadu.ca</td>
+        </tr>
+        <tr>
+          <td><%=label_tag(:password) %></td>
+          <td> <%= password_field_tag(:password) %></td>
+        </tr>
+        <tr>
+          <td> &nbsp; </td>
+          <td><%= submit_tag("Submit") %></td>
+        </tr>
+        <tr>
+          <td> &nbsp; </td>
+          <td>Do not have an account? Sign up <%= link_to "here.", {action: "signup"}  %></td>
+        </tr>
+      </table>
+  <% end %>
+</div>

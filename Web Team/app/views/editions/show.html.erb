@@ -1,0 +1,61 @@
+<h1> <%= @edition.title %> </h1>
+
+<table id="books" class="table">
+  <tr class="book">
+    <td><%= image_tag @edition.image, size: "200x100" %></td>
+    <td>
+      <b>ISBN:</b> <%= @edition.isbn %><br>
+      <b>Author:</b> <%= @edition.author %><br>
+      <b>Edition:</b> <%= @edition.edition_num %><br>
+      <b>Course:</b> <%= @edition.course_code %><br>
+      <b>Number of copies being sold:</b> <%= @edition.for_sale %><br>
+    </td>
+    <td><br>
+      <%= link_to "Sell", new_sell_path(:isbn => @edition.isbn), {class: 'btn btn-success'} %>
+    </td>
+  </tr>
+</table>
+
+<ul class="pager">
+  <% unless @availableCopies.size != 10 %>
+      <li class="next"><%= link_to "Next", edition_path(id: @edition.id, page: @nextPage) %></li>
+  <% end %>
+  <% unless @prevPage == -1 %>
+      <li class="next"><%= link_to "Previous", edition_path(id: @edition.id, page: @prevPage) %></li>
+  <% end %>
+</ul>
+
+<% unless @availableCopies.size.nil? || @availableCopies.size == 0 %>
+    <h2>Copies for Sale</h2>
+
+    <table id="books" class="table">
+      <% @availableCopies.each do |listing| %>
+      <tr class="book">
+        <td>
+          <span id="price"><b>Price:</b> $<%= listing.price %></span>
+        </td>
+        <td>
+          <b>Added:</b> <%= l(listing.start_date, :format => :notime) %><br>
+          <b>Expires:</b> <%= l(listing.end_date, :format => :notime) %><br><br>
+        </td>
+        <td>
+          <%= link_to "Contact Seller", {controller: 'sells', action: 'contactSeller'}, {class: 'btn btn-primary'} %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+
+<% end %>
+
+<% if @availableCopies.size.nil? || @availableCopies.size == 0 %>
+    <i>No copies for sale yet.</i>
+<% end %>
+
+<ul class="pager">
+  <% unless @availableCopies.size != 10 %>
+      <li class="next"><%= link_to "Next", edition_path(id: @edition.id, page: @nextPage) %></li>
+  <% end %>
+  <% unless @prevPage == -1 %>
+      <li class="next"><%= link_to "Previous", edition_path(id: @edition.id, page: @prevPage) %></li>
+  <% end %>
+</ul>

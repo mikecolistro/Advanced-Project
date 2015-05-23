@@ -1,0 +1,57 @@
+<h1><% if @departmentName %><%= @departmentName %><% end %> Books</h1>
+
+<%= form_tag(controller: 'editions', action: 'search', method: 'get') do %>
+     <%= label_tag(:q, "Search by title: ") %>
+     <%= text_field_tag(:q)%>
+     <%#= select_tag :search_for_attribute , options_for_select(['title', 'isbn', 'author', 'edition', 'course'], 'title') %>
+     <%= submit_tag("Search", :class => 'btn') %>
+<% end %>
+
+<ul class="pager">
+  <% unless @editions.size != 10 %>
+  <li class="next"><%= link_to "Next", editions_path(page: @nextPage, department: params[:department]) %></li>
+  <% end %>
+  <% unless @prevPage == -1 %>
+      <li class="next"><%= link_to "Previous", editions_path(page: @prevPage, department: params[:department]) %></li>
+  <% end %>
+</ul>
+
+<% unless @editions.empty? %>
+
+    <table id="books" class="table table-hover">
+      <% @editions.each do |book| %>
+          <tr class="bookRow">
+            <td data-link="<%= edition_path(book.id) %>"><%= image_tag book.image, size: "100x50" %></td>
+            <td data-link="<%= edition_path(book.id) %>">
+              <b>Title:</b> <%= book.title %><br>
+              <b>ISBN:</b> <%= book.isbn %><br>
+              <b>Author:</b> <%= book.author %><br>
+              <b>Edition:</b> <%= book.edition_num %><br>
+              <b>Course:</b> <%= book.course_code %><br>
+              <b>Number of copies being sold:</b> <%= book.for_sale %><br>
+            </td>
+            <td><br><br>
+              <%= link_to "Sell", new_sell_path(:isbn => book.isbn), {class: 'btn btn-success'} %>
+              <br>
+              <br>
+              <%= link_to "Add to wishlist", {controller: 'wishlist', action: 'new', id: book.id}, {class: 'btn btn-info'} %>
+
+            </td>
+          </tr>
+      <% end %>
+    </table>
+
+<% end %>
+
+<% if @editions.empty? %>
+    <i>No books yet.</i>
+<% end %>
+
+<ul class="pager">
+  <% unless @editions.size != 10 %>
+  <li class="next"><%= link_to "Next", editions_path(page: @nextPage) %></li>
+  <% end %>
+  <% unless @prevPage == -1 %>
+      <li class="next"><%= link_to "Previous", editions_path(page: @prevPage) %></li>
+  <% end %>
+</ul>

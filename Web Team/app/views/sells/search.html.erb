@@ -1,0 +1,13 @@
+<h2>Input ISBN of Book to Sell:</h2>
+
+<% unless not @error %>
+    <div class="alert alert-error">
+      <strong>Error!</strong> No ISBN matching: "<%= @error %>"
+    </div>
+<% end %>
+
+<%= form_tag(action: "new", method: "get") do %>
+    <%= text_field_tag(:isbn) %>
+    <%= submit_tag("Search", {class: "btn btn-success"}) %>
+<% end %>
+

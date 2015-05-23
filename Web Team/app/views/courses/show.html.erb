@@ -1,0 +1,41 @@
+<h1><%= @course.title %></h1>
+
+<table id="books" class="table">
+  <tr class="book">
+    <td>
+      <b>Code:</b> <%= @course.code %>-<%= @course.section %><br>
+      <b>Department:</b> <%= @course.department_name %><br>
+      <b>Instructor:</b> <%= @course.instructor %><br>
+      <b>Term:</b> <%= @course.term %><br>
+    </td>
+  </tr>
+</table>
+
+<h2>Books needed for course:</h2>
+
+<% unless @books.empty? %>
+
+    <table id="books" class="table table-hover">
+      <% @books.each do |book| %>
+          <tr class="bookRow">
+            <td data-link="<%= edition_path(book.id) %>"><%= image_tag book.image, size: "100x50" %></td>
+            <td data-link="<%= edition_path(book.id) %>">
+              <b>Title:</b> <%= book.title %><br>
+              <b>ISBN:</b> <%= book.isbn %><br>
+              <b>Author:</b> <%= book.author %><br>
+              <b>Edition:</b> <%= book.edition_num %><br>
+              <b>Course:</b> <%= book.course_code %><br>
+              <b>Number of copies being sold:</b> <%= book.for_sale %><br>
+            </td>
+            <td><%= button_to "Buy", '#', {class: 'btn btn-primary'} %>
+              <%= link_to "Sell", new_sell_path(:isbn => book.isbn), {class: 'btn btn-success'} %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+
+<% end %>
+
+<% if @books.empty? %>
+    <i>No books yet.</i>
+<% end %>

@@ -1,0 +1,21 @@
+<h1>Departments</h1>
+
+<% unless @departments.empty? %>
+	<table id="departments" class="table table-hover">
+		<tbody>
+			<% @departments.each do |department| %>
+				<tr class="departmentRow">
+					<td> 
+						<%= link_to department.name, courses_path(department_id: department.id) %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+
+	</table>
+
+<% end %>
+
+<% if @departments.empty? %>
+	<i> No departments yet. </i>
+<% end %>

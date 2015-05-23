@@ -1,0 +1,11 @@
+<% if @response == "success" %>
+    <div class="alert alert-block alert-success">
+      <h4>Success!</h4>
+      An email has been sent to the seller indicating you would like to purchase their copy of this book.
+    </div>
+<% else %>
+    <div class="alert alert-block alert-error">
+      <h4>Error!</h4>
+      Unable to contact seller at this time.
+    </div>
+<% end %>
